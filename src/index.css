@@ -1,0 +1,131 @@
+/**
+ * Global styles — Utopian Music Player
+ *
+ * - `@tailwind` layers pull in Preflight (base), your components layer, and utilities.
+ * - `@layer base` — dark-first typography, scroll behavior, focus rings accessible on keyboard.
+ * - `@layer components` — reusable glass panels / premium controls (optional shortcuts for pages).
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------------------------------------------------------------------------- */
+/* Base — defaults                                                            */
+/* -------------------------------------------------------------------------- */
+
+@layer base {
+  html {
+    @apply antialiased;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply min-h-screen;
+    margin: 0;
+    /* Dark-first: matches un-themed flash before React paints */
+    @apply bg-zinc-950 text-zinc-100;
+  }
+
+  /* Keyboard focus: visible ring without clashing with custom components */
+  :where(a, button, input, textarea, select, [role="button"], [tabindex]:not([tabindex="-1"])):focus-visible {
+    @apply outline-none ring-2 ring-violet-500/50 ring-offset-2 ring-offset-zinc-950;
+  }
+
+}
+
+/* Theme-aware text selection — mirrors active accent in `themeAccents.js` */
+html[data-theme="goldBlack"] ::selection {
+  background: rgba(245, 158, 11, 0.38);
+  color: #fffbeb;
+}
+html[data-theme="purple"] ::selection {
+  background: rgba(139, 92, 246, 0.38);
+  color: #faf5ff;
+}
+html[data-theme="whiteBlack"] ::selection {
+  background: #000;
+  color: #fff;
+}
+html[data-theme="neonBlue"] ::selection {
+  background: rgba(6, 182, 212, 0.35);
+  color: #ecfeff;
+}
+html[data-theme="darkRed"] ::selection {
+  background: rgba(248, 113, 113, 0.35);
+  color: #fff1f2;
+}
+html[data-theme="glass"] ::selection {
+  background: rgba(255, 255, 255, 0.22);
+  color: #fafafa;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Components — glassmorphism & chrome                                         */
+/* -------------------------------------------------------------------------- */
+
+@layer components {
+  /**
+   * Glass panel — blur + hairline border + soft inner highlight.
+   * Use: <div class="glass-panel">...</div>
+   */
+  .glass-panel {
+    @apply rounded-2xl border border-white/[0.08] bg-zinc-950/55 shadow-glass backdrop-blur-2xl backdrop-saturate-150;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-panel-subtle {
+    @apply rounded-xl border border-white/[0.06] bg-white/[0.04] backdrop-blur-xl;
+  }
+
+  /**
+   * Range inputs in Player / Settings — track thumb polish (WebKit + Firefox)
+   */
+  .utopian-range::-webkit-slider-thumb {
+    @apply h-4 w-4 cursor-pointer appearance-none rounded-full bg-white shadow-md ring-2 ring-violet-500/40;
+  }
+  .utopian-range::-moz-range-thumb {
+    @apply h-4 w-4 cursor-pointer rounded-full border-0 bg-white shadow-md ring-2 ring-violet-500/40;
+  }
+
+  /** Scrollable queue / lists: thin scrollbar */
+  .utopian-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(139, 92, 246, 0.35) transparent;
+  }
+  .utopian-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .utopian-scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-violet-500/30;
+  }
+  .utopian-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Utilities — small motion / polish                                           */
+/* -------------------------------------------------------------------------- */
+
+@layer utilities {
+  .utopian-fade-in {
+    animation: utopian-fade-in 0.35s ease-out both;
+  }
+
+  @keyframes utopian-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

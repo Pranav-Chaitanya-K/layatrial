@@ -1,0 +1,111 @@
+/**
+ * Per-theme Tailwind class bundles — primary buttons, nav rails, rings, and glows.
+ * Consumed via `ThemeAccentContext` so every surface tracks the active `App.jsx` theme id.
+ */
+
+export const THEME_IDS = ["goldBlack", "purple", "whiteBlack", "neonBlue", "darkRed", "glass"];
+
+/** @type {Record<string, Record<string, string>>} */
+export const THEME_ACCENTS = {
+  goldBlack: {
+    toggleOn: "border-amber-500/50 bg-amber-600/35 shadow-md shadow-amber-500/15",
+    toggleOff: "border-white/12 bg-zinc-800/80",
+    btn: "bg-amber-500 text-neutral-950 shadow-lg shadow-amber-900/35 hover:bg-amber-400 hover:shadow-amber-500/25",
+    btnOutline: "border-amber-500/40 bg-amber-500/10 text-amber-100 hover:bg-amber-500/20 hover:border-amber-400/50",
+    btnMuted: "border-white/10 bg-white/[0.05] text-zinc-200 hover:bg-white/[0.1] hover:border-amber-500/20",
+    focusRing: "focus-visible:ring-amber-400/60",
+    navInset: "shadow-amber-500",
+    navIconActive: "text-amber-300",
+    navHoverGlow: "hover:shadow-amber-500/15",
+    cardRing: "ring-amber-500/40 border-amber-500/25",
+    pulse: "text-amber-200/90",
+    chip: "border-amber-500/35 bg-amber-500/10 text-amber-100",
+    gradient: "from-amber-400 to-yellow-600",
+    heroBlob: "bg-amber-500/35",
+  },
+  purple: {
+    toggleOn: "border-violet-500/50 bg-violet-600/40 shadow-md shadow-violet-500/15",
+    toggleOff: "border-white/12 bg-zinc-800/80",
+    btn: "bg-violet-600 text-white shadow-lg shadow-violet-950/40 hover:bg-violet-500 hover:shadow-violet-500/25",
+    btnOutline: "border-violet-500/40 bg-violet-500/10 text-violet-100 hover:bg-violet-500/20",
+    btnMuted: "border-white/10 bg-white/[0.05] text-zinc-200 hover:bg-white/[0.1] hover:border-violet-500/25",
+    focusRing: "focus-visible:ring-violet-400",
+    navInset: "shadow-violet-500",
+    navIconActive: "text-violet-300",
+    navHoverGlow: "hover:shadow-violet-500/15",
+    cardRing: "ring-violet-500/45 border-violet-500/30",
+    pulse: "text-violet-300/90",
+    chip: "border-violet-500/35 bg-violet-500/10 text-violet-100",
+    gradient: "from-violet-500 to-fuchsia-500",
+    heroBlob: "bg-violet-600/40",
+  },
+  whiteBlack: {
+    toggleOn: "border-black/35 bg-black/20 shadow-md shadow-black/10",
+    toggleOff: "border-black/15 bg-white",
+    btn: "bg-neutral-950 text-white shadow-lg shadow-black/30 hover:bg-black hover:shadow-black/40",
+    btnOutline: "border-black/25 bg-black/[0.06] text-neutral-900 hover:bg-black/[0.1]",
+    btnMuted: "border-black/15 bg-white text-neutral-800 hover:bg-neutral-100 hover:border-black/30",
+    focusRing: "focus-visible:ring-neutral-800/50",
+    /** Sidebar stays dark — keep rail legible even in “White + Black” shell. */
+    navInset: "shadow-white",
+    navIconActive: "text-white",
+    navHoverGlow: "hover:shadow-white/10",
+    cardRing: "ring-black/30 border-black/20",
+    pulse: "text-neutral-700",
+    chip: "border-black/20 bg-black/[0.06] text-neutral-900",
+    gradient: "from-neutral-800 to-black",
+    heroBlob: "bg-neutral-900/25",
+  },
+  neonBlue: {
+    toggleOn: "border-cyan-500/50 bg-cyan-600/35 shadow-md shadow-cyan-500/15",
+    toggleOff: "border-white/12 bg-slate-900/80",
+    btn: "bg-cyan-500 text-slate-950 shadow-lg shadow-cyan-900/35 hover:bg-cyan-400 hover:shadow-cyan-400/30",
+    btnOutline: "border-cyan-500/40 bg-cyan-500/10 text-cyan-100 hover:bg-cyan-500/20",
+    btnMuted: "border-white/10 bg-white/[0.05] text-cyan-50 hover:bg-white/[0.1] hover:border-cyan-500/25",
+    focusRing: "focus-visible:ring-cyan-400",
+    navInset: "shadow-cyan-400",
+    navIconActive: "text-cyan-300",
+    navHoverGlow: "hover:shadow-cyan-400/20",
+    cardRing: "ring-cyan-500/40 border-cyan-500/25",
+    pulse: "text-cyan-300/90",
+    chip: "border-cyan-500/35 bg-cyan-500/10 text-cyan-100",
+    gradient: "from-cyan-400 to-blue-600",
+    heroBlob: "bg-cyan-500/35",
+  },
+  darkRed: {
+    toggleOn: "border-rose-500/50 bg-rose-600/35 shadow-md shadow-rose-500/15",
+    toggleOff: "border-white/12 bg-zinc-900/80",
+    btn: "bg-rose-600 text-white shadow-lg shadow-rose-950/35 hover:bg-rose-500 hover:shadow-rose-500/25",
+    btnOutline: "border-rose-500/40 bg-rose-500/10 text-rose-100 hover:bg-rose-500/20",
+    btnMuted: "border-white/10 bg-white/[0.05] text-red-50 hover:bg-white/[0.1] hover:border-rose-500/25",
+    focusRing: "focus-visible:ring-rose-400",
+    navInset: "shadow-rose-500",
+    navIconActive: "text-rose-300",
+    navHoverGlow: "hover:shadow-rose-500/15",
+    cardRing: "ring-rose-500/40 border-rose-500/28",
+    pulse: "text-rose-300/90",
+    chip: "border-rose-500/35 bg-rose-500/10 text-rose-100",
+    gradient: "from-rose-500 to-red-700",
+    heroBlob: "bg-rose-600/35",
+  },
+  glass: {
+    toggleOn: "border-white/35 bg-white/20 shadow-md shadow-white/10",
+    toggleOff: "border-white/12 bg-white/[0.08]",
+    btn: "bg-white/90 text-zinc-950 shadow-lg shadow-black/40 hover:bg-white hover:shadow-white/20",
+    btnOutline: "border-white/20 bg-white/10 text-white hover:bg-white/15",
+    btnMuted: "border-white/12 bg-white/[0.06] text-zinc-100 hover:bg-white/10",
+    focusRing: "focus-visible:ring-white/50",
+    navInset: "shadow-white/60",
+    navIconActive: "text-white",
+    navHoverGlow: "hover:shadow-white/10",
+    cardRing: "ring-white/30 border-white/15",
+    pulse: "text-zinc-200",
+    chip: "border-white/20 bg-white/10 text-white",
+    gradient: "from-zinc-200 to-white",
+    heroBlob: "bg-white/25",
+  },
+};
+
+export function resolveAccent(themeId) {
+  return THEME_ACCENTS[themeId] || THEME_ACCENTS.purple;
+}
